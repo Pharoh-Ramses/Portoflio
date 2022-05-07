@@ -2,9 +2,9 @@ const baseUrl = 'https://fitnesstrac-kr.herokuapp.com/api'
 
   
   export const testAuthentication = async (token) => {
-    const url = `${baseUrl}/test/me`;
+    const url = `${baseUrl}/users/me`;
     const response = await fetch(url, {
-      method: "GET",
+    
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`
@@ -22,21 +22,21 @@ const baseUrl = 'https://fitnesstrac-kr.herokuapp.com/api'
   
   
   export const registerUser = async (userObject) => {
-    
+    console.log("USEROBJECT", userObject)
     const url = `${baseUrl}/users/register`;
     const response = await fetch(url, {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(userObject.user)
+      body: JSON.stringify(userObject)
     });
-    console.log(userObject.user)
     const json = await response.json();
-    if (json.success) {
+    console.log("USERJSON", json)
+    if (json.token) {
       return json.token;
     } else {
-      alert(`${json.error.message}`);
+      alert(`${json.message}`);
     }
   };
   
@@ -58,7 +58,7 @@ const baseUrl = 'https://fitnesstrac-kr.herokuapp.com/api'
       console.log(json.token)
       return json.token;
     } else {
-      alert(`${json.error.message}`)
+      alert(`${json.error}`)
     }
   }
   
@@ -156,7 +156,8 @@ const baseUrl = 'https://fitnesstrac-kr.herokuapp.com/api'
           }
       });
       const json = await response.json();
-      if(json.success){
+      console.log("GETALLROUTINES", json)
+      if(json){
           return json
       } else {
           alert(`${json.error.message}`)

@@ -6,7 +6,8 @@ import Layout from './components/Layout';
 import LogIn from './components/LogIn';
 import Home from './components/Home';
 import RegisterForm from './components/Register';
-import {testAuthentication} from './components/API';
+import Routines from './components/Routines';
+import {loginAsUser} from './components/API';
 
 function App() {
 
@@ -16,15 +17,16 @@ function App() {
   const [password, setPassword] = useState('');
   const [loggedInUsername, setLoggedInUsername] = useState('');
 
-  async function isValidJWT() {
-    const token = localStorage.getItem("access_token");
-    if (!token) setIsLoggedIn(false);
-    else {
-      const isValid = await testAuthentication(token);
-      setLoggedInUsername(isValid.data.user.username);
-      setIsLoggedIn(isValid);
-    }
-  }
+  // async function isValidJWT() {
+  //   const token = localStorage.getItem("access_token");
+  //   if (!token) setIsLoggedIn(false);
+  //   else {
+  //     const isValid = await loginAsUser(token);
+  //     setLoggedInUsername(isValid.user.username);
+  //     setIsLoggedIn(isValid);
+  //     console.log(isValid)
+  //   }
+  // }
 
 
   let userObject = {
@@ -34,9 +36,9 @@ function App() {
     }
   }
 
-  useEffect(() => {
-    isValidJWT();
-  }, []);
+  // useEffect(() => {
+  //   isValidJWT();
+  // }, []);
 
   return (
    <>
@@ -45,6 +47,7 @@ function App() {
         <Route index element={<Home />}/>
         <Route path="Login" element = {<LogIn setToken={setToken} userObject={userObject} setUsername={setUsername} setPassword={setPassword} />} />
         <Route path='Register' element = {<RegisterForm token={token} setToken={setToken} userObject={userObject}/>}/>
+        <Route path='Routines' element = {<Routines />} />
       </Route>
     </Routes>
    </>

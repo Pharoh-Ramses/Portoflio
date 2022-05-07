@@ -11,8 +11,26 @@ const RegisterForm = (props) => {
     const [passwordTwo, setPasswordTwo] = useState("");
     const { token, setToken, userObject } = props
 
-
-    let passwordMatch = (passwordOne === passwordTwo);
+    const submit = async(event)  =>  {
+        const userObject = {
+            username: username,
+            password: passwordTwo
+        }
+        let passwordMatch = (passwordOne === passwordTwo);
+            event.preventDefault()
+            if (passwordMatch) {
+                var token = await registerUser(userObject)
+                if(token){ 
+                setToken(token)
+                localStorage.setItem("access_token", token);
+                }
+            }
+    setUsername("")
+    setPasswordOne("")
+    setPasswordTwo("")
+    
+        
+    }
 
     
 
@@ -26,6 +44,7 @@ const RegisterForm = (props) => {
                 id="username"
                 name="username"
                 minLength="8"
+                value={username}
                 onChange={(event) => { setUsername(event.target.value) }}
                 required
             >
@@ -38,6 +57,7 @@ const RegisterForm = (props) => {
                 id="pwd"
                 name="pwd"
                 minLength="8"
+                value={passwordOne}
                 onChange={(event) => { setPasswordOne(event.target.value) }}
                 required
             ></input>
@@ -49,22 +69,13 @@ const RegisterForm = (props) => {
                 id="pwdConf"
                 name="pwdConf"
                 minLength="8"
+                value={passwordTwo}
+
                 onChange={(event) => { setPasswordTwo(event.target.value) }}
                 required></input>
             <br />
             <button
-                onClick={(event) => {
-                    event.preventDefault()
-                    if (passwordMatch) {
-                        setToken(registerUser(userObject))
-                        localStorage.setItem("access_token", token);
-                    }
-                    document.getElementById('username').value = '';
-                    document.getElementById('pwd').value = '';
-                    document.getElementById('pwdConf').value = '';
-                }
-
-                }>Register</button>
+                onClick={submit}>Register</button>
             <br />
             <Link to="/">
                 <a>Already have an account? Please log in</a>
