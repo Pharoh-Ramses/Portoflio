@@ -5,7 +5,8 @@ import LogoSubtitle from '../../assets/images/logo_sub.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClipboardCheck, faEnvelope, faHome, faRunning, faUser } from '@fortawesome/free-solid-svg-icons';
 
-const Sidebar = () => (
+const Sidebar = () => {
+  return(
     <div className='nav-bar'>
         <Link className='logo' to='/'>
             <img src={LogoS} alt="logo" />
@@ -31,6 +32,7 @@ const Sidebar = () => (
         </li>
       </ul>
     </div>
-)
+  )
+}
 
 export default Sidebar;
