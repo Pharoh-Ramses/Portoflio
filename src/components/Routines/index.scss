@@ -1,4 +1,25 @@
-#text{
-    text-align: center;
-    display: block;
+.routine-box{
+    position:relative;
+    width: 450px;
+    margin: 100px auto 0;
+    color: #dad700;
+    padding: 10px;
+    box-sizing: border-box;
+    height: 80%;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.routine-list {
+    display: flex;
+    background: #b57fb9;
+    padding: 10px 20px;
+    margin: 5px 0;
+    transition: .5s;
+    border-radius: 5px;
+}
+
+.routine-list:hover {
+    transform: scale(1.06);
+    background: #dc99e1 ;
 }

@@ -16,9 +16,9 @@ const Routines = () => {
     }, []);
     
     return(
-    <div id="text">
+    <div className="routine-box">
         {routines.map(routines=>
-            <div key={routines.id}>
+            <div className="routine-list" key={routines.id}>
                 <h2>Routine Name: {routines.name}</h2>
                 <h3>Routine Goal: {routines.goal}</h3>
                 <p>{routines.activities.name}</p>

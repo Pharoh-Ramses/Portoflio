@@ -3,9 +3,13 @@ import './index.scss'
 
 const Home = () => {
     return(
-        <p id="text">
+        <div className="content">
+            <h1 className="welcome">
             Hello welcome to FitnessTrakr!
-        </p>
+            </h1>
+            <p> If this is your first time, take a look at some popular routines to the left. Add your own by making a free account! If you are not new, you know what to do.</p>
+
+        </div>
     )
         
     

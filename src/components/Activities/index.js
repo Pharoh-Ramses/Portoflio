@@ -28,18 +28,19 @@ const Activities = (props) => {
     }, []);
     
     return(
-    <div id="text">
+    <div className="list">
+        <h2 className="notice">Here are a list of popular activites, if you don't see one you are looking for, add a new one below.</h2>
         {activities.map(activities=>
-            <div key={activities.id}>
+            <div className="activity-list" key={activities.id}>
                 <h2>Activity Name: {activities.name}</h2>
                 <h3>Activity Description: {activities.description}</h3>
             </div>
             )}
             <br />
-            <div>
+            <div className="form-section">
                 {!isLoggedIn ? <form>
                     <h1 id="form">Create A New Activity</h1>
-        <form id='routineForm' className="routines">
+        <form className="form">
             <label htmlFor="createActivityName">Name: </label>
             <input
                 type="text"

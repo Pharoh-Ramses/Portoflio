@@ -1,4 +1,44 @@
-#text{
-    text-align: center;
-    display: block;
+.list{
+    position:relative;
+    width: 450px;
+    margin: 100px auto 0;
+    color: #dad700;
+    padding: 10px;
+    box-sizing: border-box;
+    height: 80%;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.activity-list {
+    display: flex;
+    background: #b57fb9;
+    padding: 10px 20px;
+    margin: 5px 0;
+    transition: .5s;
+    border-radius: 5px;
+}
+
+.activity-list:hover {
+    transform: scale(1.06);
+    background: #dc99e1 ;
+}
+.notice {
+    background: #045e8f;
+    padding: 10px;
+    border-radius: 5px;
+    position:fixed;
+    width: 250px;
+    left: 75px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.form-section {
+    background: #045e8f;
+    padding: 10px;
+    position:fixed;
+    border-radius: 5px;
+    width: 250px;
+    left: 75px;
+    top: 300px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
