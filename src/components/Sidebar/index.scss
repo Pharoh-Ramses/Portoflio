@@ -89,6 +89,12 @@
           content: 'Activities';
         }
       }
+
+      a.myroutines-link {
+        &::after {
+          content: 'MyRoutines';
+        }
+      }
   
       a.active {
         svg {

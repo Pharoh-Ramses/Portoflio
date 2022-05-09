@@ -3,8 +3,8 @@ import './index.scss'
 
 const Home = () => {
     return(
-        <p id="test">
-            HELLO WORLD!SSSSSSSSSSSSSSSSSSSSS
+        <p id="text">
+            Hello welcome to FitnessTrakr!
         </p>
     )
         

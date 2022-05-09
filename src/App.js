@@ -7,7 +7,9 @@ import LogIn from './components/LogIn';
 import Home from './components/Home';
 import RegisterForm from './components/Register';
 import Routines from './components/Routines';
-import {loginAsUser} from './components/API';
+import Activities from './components/Activities';
+import MyRoutines from './components/MyRoutines';
+import {loginAsUser} from './components/API'
 
 function App() {
 
@@ -16,17 +18,19 @@ function App() {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('');
   const [loggedInUsername, setLoggedInUsername] = useState('');
+  const [routines, setRoutines] = useState([]);
+  const [activities, setActivities] = useState([]);
 
-  // async function isValidJWT() {
-  //   const token = localStorage.getItem("access_token");
-  //   if (!token) setIsLoggedIn(false);
-  //   else {
-  //     const isValid = await loginAsUser(token);
-  //     setLoggedInUsername(isValid.user.username);
-  //     setIsLoggedIn(isValid);
-  //     console.log(isValid)
-  //   }
-  // }
+  async function isValidJWT() {
+    const token = localStorage.getItem("access_token");
+    if (!token) setIsLoggedIn(false);
+    else {
+      const isValid = await loginAsUser(token);
+      setLoggedInUsername(isValid.username);
+      setIsLoggedIn(isValid);
+      console.log(isValid)
+    }
+  }
 
 
   let userObject = {
@@ -36,9 +40,9 @@ function App() {
     }
   }
 
-  // useEffect(() => {
-  //   isValidJWT();
-  // }, []);
+  useEffect(() => {
+    isValidJWT();
+  }, []);
 
   return (
    <>
@@ -48,6 +52,8 @@ function App() {
         <Route path="Login" element = {<LogIn setToken={setToken} userObject={userObject} setUsername={setUsername} setPassword={setPassword} />} />
         <Route path='Register' element = {<RegisterForm token={token} setToken={setToken} userObject={userObject}/>}/>
         <Route path='Routines' element = {<Routines />} />
+        <Route path='Activities' element = {<Activities isLoggedIn={isLoggedIn} activities={activities} setActivities={setActivities} />} />
+        <Route path='MyRoutines' element = {<MyRoutines isLoggedIn={isLoggedIn} routines={routines} setRoutines={setRoutines}/>} />
       </Route>
     </Routes>
    </>
